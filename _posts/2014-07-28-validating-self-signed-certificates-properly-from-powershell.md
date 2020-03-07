@@ -2,8 +2,8 @@
 layout: post
 date: 2014-07-28 01:30:03 -04:00
 tags: [powershell, ssl, rest, webrequest]
-description: A PowerShell module to allow weakening or circumventing SSL validation on web queries.
 title: Validating Self-Signed Certificates From .Net and PowerShell
+subtitle: A PowerShell module to allow weakening or circumventing SSL validation on web queries.
 ---
 
 In this article I'm going to present a module that helps you deal with one of the common problems for Windows PowerShell users (and even .Net developers) who are trying to interact from command-line applications with web interfaces (especially those that are hosted internally): Self-signed certificates, and how to ignore the errors that come when you try to validate them.  If you don't care about why I wrote it the way I wrote it, you can just [check out the module on GitHub](https://github.com/Jaykul/Tunable-SSL-Validator) or install it with PoshCode or PowerShellGet by running:
