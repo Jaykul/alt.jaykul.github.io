@@ -26,7 +26,7 @@ navbar-links:
     - PANSIES Colors: "https://github.com/PoshCode/PANSIES/"
     - ShowUI WPF: "https://github.com/ShowUI/ShowUI"
     - PoshConsole: "https://github.com/Jaykul/PoshConsole/"
-  Resume: "Resume.docx"
+  Resume: "Resume-ShortForm.pdf"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
