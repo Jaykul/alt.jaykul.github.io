@@ -51,7 +51,7 @@ comments:
   # Whether entries need to be approved before they are published to the main
   # branch. If set to `true`, a pull request will be created for your approval.
   # Otherwise, entries will be published to the main branch automatically.
-  moderation: false
+  moderation: true
 
   # Akismet spam detection.
   # akismet:
@@ -102,7 +102,7 @@ comments:
   # 2. Register your domain at https://www.google.com/recaptcha/ and choose reCAPTCHA V2
   # 3. Uncomment `siteKey` and `secret` and fill them in with your values
   reCaptcha:
-    enabled: false
+    enabled: true
     #siteKey: ""
     # ENCRYPT reCaptcha secret key using Staticman /encrypt endpoint
     # i.e. https://{STATICMAN API INSTANCE}/v3/encrypt/{your-site-secret}
