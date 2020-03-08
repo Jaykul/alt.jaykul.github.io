@@ -135,9 +135,7 @@ staticman:
   endpoint   : https://staticman3.herokuapp.com/v3/entry/github/ # URL of your own deployment, with a trailing slash (will fallback to a public GitLab instance) eg. https://<your-api>/v3/entry/github/
   reCaptcha:
     # reCaptcha for Staticman (OPTIONAL, but recommended for spam protection)
-    # If you use reCaptcha, you must also set these parameters in staticman.yml
-    siteKey  : 6LcOdN8UAAAAAE3LlP1sxEwF91a4YRO6MH9IkVyv # Use your own site key, you need to apply for one on Google
-    secret   : dzKvODmze94SmPIJl/9r66cf+6jl/CUuW3qrUFAzCn8P4ID9ARa4FpHNcehmIjAcVD+TbXS1+4NaaJSnoJvuJ5FrrkiUEUbKNYDFu/c1ipHUMrs6DBKkbpzVFiTlmAGGt/yO4yyzF95bv0BG2SzyTH6qI0Asn7SkzaDOP3rKnRaoI7Cm2nSaBchxZPlmGsLqVQbsm85cuNyEjxxQvqCjNyYOuRLMsSgXt66x2HI/35TRFKJiZdQ3U8096Xq1om5HZbowk5aDvrGeN6ULxSJi+d9GIkJIFXfSHuPEgaCExmCLC6UpXYI1HPlE7p9SD/9pLjzd/9lrA9gwEDcOcMWwDg== # ENCRYPT your password by going to https://staticman3.herokuapp.com/v3/encrypt/<your-site-secret>
+    # If you use reCaptcha, you must also set parameters in staticman.yml
 
 # --- Misc --- #
 

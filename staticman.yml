@@ -103,8 +103,8 @@ comments:
   # 3. Uncomment `siteKey` and `secret` and fill them in with your values
   reCaptcha:
     enabled: true
-    #siteKey: ""
+    siteKey  : 6LcOdN8UAAAAAE3LlP1sxEwF91a4YRO6MH9IkVyv # Use your own site key, you need to apply for one on Google
     # ENCRYPT reCaptcha secret key using Staticman /encrypt endpoint
-    # i.e. https://{STATICMAN API INSTANCE}/v3/encrypt/{your-site-secret}
+    # i.e. https://staticman3.herokuapp.com/v3/encrypt/<your-site-secret>
     # For more information, visit https://staticman.net/docs/encryption
-    #secret: ""
+    secret   : dzKvODmze94SmPIJl/9r66cf+6jl/CUuW3qrUFAzCn8P4ID9ARa4FpHNcehmIjAcVD+TbXS1+4NaaJSnoJvuJ5FrrkiUEUbKNYDFu/c1ipHUMrs6DBKkbpzVFiTlmAGGt/yO4yyzF95bv0BG2SzyTH6qI0Asn7SkzaDOP3rKnRaoI7Cm2nSaBchxZPlmGsLqVQbsm85cuNyEjxxQvqCjNyYOuRLMsSgXt66x2HI/35TRFKJiZdQ3U8096Xq1om5HZbowk5aDvrGeN6ULxSJi+d9GIkJIFXfSHuPEgaCExmCLC6UpXYI1HPlE7p9SD/9pLjzd/9lrA9gwEDcOcMWwDg==

@@ -4,7 +4,6 @@ title: A Fresh Start
 subtitle: An explanation of why everything is missing
 date: 2014-07-24 01:02:43 -04:00
 tags: [site-news]
-author: Joel Bennett (Jaykul) <Jaykul@HuddledMasses.org> http://HuddledMasses.org
 ---
 
 A few weeks ago, someone somehow injected a shell onto my WordPress powered blog site. They managed to get multiple hacking tools installed, delete files required for hosting, and who knows what else. Needless to say I was frustrated and upset. In fact, I was so frustrated that to get rid of it I just tore down the whole site.
