@@ -45,13 +45,13 @@ It's a pretty simple class with three constructors: the default (parameterless) 
 
 We can add this type to our PowerShell session using `Add-Type`:
 
-```PowerShell
+```powershell
 Add-Type -path User.cs
 ```
 
 The most interesting of PowerShell's special casting powers is the hashtable cast. Any class that has a default (parameterless) constructor can be created by casting a hashtable of (some of) it's _settable_ properties:
 
-```PowerShell
+```powershell
 [user]@{
 Id = 1
 Name = "Jaykul"
@@ -86,13 +86,13 @@ So for instance, a `int` will cast _implicitly_ to a `double`, but not the other
 PowerShell simply won't call the method that accepts an unsigned int unless you specifically cast the number to an unsigned int. As far as syntax, you can double-cast it:
 
 
-```PowerShell
+```powershell
 [User][uint]2
 ```
 
 Or you can call the constructor more explicitly. An _explicit_ cast is one where you specify the type name that you want to cast to. When you specify the type like `[uint]` then PowerShell assumes you understand what you're doing.
 
-```PowerShell
+```powershell
 [User]::new([uint]2)
 ```
 

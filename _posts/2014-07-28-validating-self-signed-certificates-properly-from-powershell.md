@@ -8,7 +8,9 @@ subtitle: A PowerShell module to allow weakening or circumventing SSL validation
 
 In this article I'm going to present a module that helps you deal with one of the common problems for Windows PowerShell users (and even .Net developers) who are trying to interact from command-line applications with web interfaces (especially those that are hosted internally): Self-signed certificates, and how to ignore the errors that come when you try to validate them.  If you don't care about why I wrote it the way I wrote it, you can just [check out the module on GitHub](https://github.com/Jaykul/Tunable-SSL-Validator) or install it with PoshCode or PowerShellGet by running:
 
+```powershell
     Install-Module TunableSSLValidator
+```
 
 The module includes commands for importing certificates from files, loading them from the web server response of an http url, importing them to the Windows certificate store (to be trusted), and temporarily trusting them for a single PowerShell session.  It also includes proxy function command wrappers for ``Invoke-WebRequest`` and ``Invoke-RestMethod`` to add an ``-Insecure`` switch which allows single queries to ignore invalid SSL certificates.
 
@@ -35,11 +37,13 @@ That first solution is probably the right one, and I actually wrote a couple of 
 
 So if you want to proactively avoid SSL errors, you have to set the ServerCertificateValidationCallback. For certain situations, it's enough to just do this in PowerShell:
 
-    $url = "https://csh.rit.edu"
-    $web = New-Object Net.WebClient
-    [System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $true }
-    $output = $web.DownloadString($url)
-    [System.Net.ServicePointManager]::ServerCertificateValidationCallback = $null
+```powershell
+$url = "https://csh.rit.edu"
+$web = New-Object Net.WebClient
+[System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $true }
+$output = $web.DownloadString($url)
+[System.Net.ServicePointManager]::ServerCertificateValidationCallback = $null
+```
 
 Note, that I set the ServerCertificateValidationCallback back to ``$null`` when I was done -- this restores normal validation, so I have, in effect, only disabled the validation for that one call (since PowerShell isn't generally multi-threaded, I don't normally have to worry about other threads being affeected). However, setting the ServerCertificateValidationCallback to a scriptblock won't work for an asynchronous callback (one that happens on a task thread), because the other thread won't have a runspace to execute the script on.  So, if you try to use the same technique with Invoke-WebRequest or Invoke-RestMethod instead of calling the .Net ``WebClient`` methods directly, you'll just get a different error:
 
@@ -68,7 +72,9 @@ The point is that I don't want to weaken *all* validation, I just want to trust 
 
 Let's look at the callback and see the information we have to work with:
 
-    bool TunableValidationCallback(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+```csharp
+bool TunableValidationCallback(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+```
 
 1. The sender is usually going to be the WebRequest that was calling an https domain that failed validation.
 2. The certificate, of course, is the one the actually failed ...
@@ -78,11 +84,3 @@ Let's look at the callback and see the information we have to work with:
 So, what I've written is first a check for the three main SSL errors, and a way to pre-emptively ignore them once, or post-humously trust a certificate that failed the first time, as well as some better error messages (which have to be output using Console.Error.WriteLine rather than Write-Error because they might be running on a background thread).
 
 For now, that's enough of an explanation, I've posted the [tunable SSL validator code to github](https://github.com/Jaykul/Tunable-SSL-Validator), and this blog post as the ReadMe, where I'll update it with more details if need be.
-
-[//]: # (This should turn into something like a cucumber spec...	)
-[//]: # (	)
-[//]: # (#    #. I want to be sure I'm not weakening validation for requests that I don't mean to affect. )
-[//]: # (#    #. I want to be able to just trust a few specific certificate(s).	)
-[//]: # (#    #. I want to be able to just ignore problems for a single web request.	)
-[//]: # (#       except the ones that I specifically override security on.	)
-[//]: # (#	)
